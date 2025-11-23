@@ -1203,21 +1203,19 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Session Controls**")
     if st.sidebar.button("Clear Session State"):
-        for key in [
-            "chat_history",
-            "patient_db",
-            "appointment_db",
-            "logs",
-            "trace",
-            "rag_index",
-            "patient_doc_index",
-            "processed_files",
-            "raw_file_text",
-            "rag_mode",
-        ]:
-            if key in st.session_state:
-                del st.session_state[key]
-        st.experimental_rerun()
+    st.session_state.clear()
+
+    try:
+        st.cache_data.clear()
+    except:
+        pass
+
+    try:
+        st.cache_resource.clear()
+    except:
+        pass
+
+    st.rerun()
 
     tab_chat, tab_appts, tab_files, tab_metrics, tab_debug = st.tabs(
         [
