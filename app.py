@@ -1203,7 +1203,7 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Session Controls**")
     if st.sidebar.button("Clear Session State"):
-    st.session_state.clear()
+       st.session_state.clear()
 
     try:
         st.cache_data.clear()
